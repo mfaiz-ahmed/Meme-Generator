@@ -10,12 +10,11 @@ const Dashboard = async ()  => {
   console.log(memes);
   
   return (
-    <div className="flex flex-wrap gap-10">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10 mx-auto">
         {memes.map(meme=>{
-            return <div className="border border-gray-800 p-3 text-center">
+            return <div className="relative w-56 h-56  rounded-lg border border-gray-300">
                 <Link href={`Details/${meme.id}`} key={meme.id}>
-                    <Image className="border border-gray-800" width={200} height={100} src={meme.url}/>
-                <h1 className="pt-10 text-xl font-bold">{meme.name}</h1>
+                    <Image layout="fill" objectFit="cover" className="absolute inset-0" src={meme.url}/>
                 </Link>
             </div>
         })}
