@@ -1,18 +1,18 @@
 "use client"
 
-const { default: Image } = require("next/image")
-const { useEffect, useState } = require("react")
+import Image from "next/image"
+import React , {useState , useEffect} from "react"
 
 const fetchMeme = async (id)=>{
     const res = await fetch('https://api.imgflip.com/get_memes')
     const data = await res.json()
-    return data.data.memes.find((meme)=> meme.id)
+    return data.data.memes.find((meme)=> meme.id === id)
 }
 
 
 const detailPage = ({params})=>{
 
-    const [meme , setMeme] = useState(undefined)
+    const [meme , setMeme] = useState('')
 
     useEffect(()=>{
         const loadMeme = async ()=>{
@@ -23,7 +23,7 @@ const detailPage = ({params})=>{
     } , [params.id])
 
     return <div>
-        <Image width={200} height={100} src={meme?.url} />
+        <Image width={200} height={100} src={meme.url} />
     </div>
 
 }
