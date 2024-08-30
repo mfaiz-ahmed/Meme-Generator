@@ -14,7 +14,7 @@ const Dashboard = async ()  => {
         {memes.map(meme=>{
             return <div className="relative w-56 h-56  rounded-lg border border-gray-300">
                 <Link href={`Details/${meme.id}`} key={meme.id}>
-                    <Image layout="fill" objectFit="cover" className="absolute inset-0" src={meme.url}/>
+                    <Image layout="fill" objectFit="cover" className="absolute inset-0 rounded-md grayscale hover:grayscale-0 ease-in-out duration-500" src={meme.url} alt={meme.name}/>
                 </Link>
             </div>
         })}
