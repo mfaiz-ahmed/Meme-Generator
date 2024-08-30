@@ -93,7 +93,7 @@ const downloadMeme = async ()=>{
                 setSecondText(e.target.value)
             }} />
         </div>
-        <button onClick={generateMeme} className="mt-5 text-l bg-gray-500 hover:bg-gray-800 rounded-md text-white p-2">Generate     <FontAwesomeIcon icon={faWandSparkles} /></button>
+        <button onClick={generateMeme} className="mt-5 text-l bg-gray-500 hover:bg-gray-800 rounded-md text-white p-2">Generate     <FontAwesomeIcon className="animate-bounce" icon={faWandSparkles} /></button>
     </div>
     </div>
     {generatedUrl && 
