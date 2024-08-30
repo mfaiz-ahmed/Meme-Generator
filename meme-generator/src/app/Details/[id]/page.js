@@ -3,7 +3,7 @@
 import Image from "next/image"
 import React , {useState , useEffect} from "react"
 import { FontAwesomeIcon  } from "@fortawesome/react-fontawesome"
-import { faWandSparkles } from "@fortawesome/free-solid-svg-icons"
+import { faWandSparkles , faDownload} from "@fortawesome/free-solid-svg-icons"
 
 const fetchMeme = async (id)=>{
     const res = await fetch('https://api.imgflip.com/get_memes')
@@ -48,6 +48,24 @@ const generateMeme = async ()=>{
     }
 }
 
+const downloadMeme = async ()=>{
+ if (!generatedUrl) return
+ const response = await fetch(generatedUrl)
+ const blob = await response.blob()
+ const url = window.URL.createObjectURL(blob)
+
+ const link = document.createElement('a')
+ link.href = url
+ link.download = `${meme?.name || 'meme'}.jpg`
+ document.body.appendChild(link)
+ link.click()
+ document.body.removeChild(link)
+ window.URL.revokeObjectURL(url)
+}
+
+
+
+
     return <div className="mt-10 flex justify-around">
         <div className="rounded-lg margin border text-center border-gray-800 w-96 shadow-xl">
     <div className="grid justify-center items-center p-10">
@@ -83,6 +101,7 @@ const generateMeme = async ()=>{
         <div className="grid justify-center items-center p-10">
             <h1 className="font-black text-xl mb-10">Generated Meme</h1>
         <Image width={300} height={300} src={generatedUrl} alt="Generated Meme"/>
+        <button onClick={downloadMeme} className="mt-5 text-l bg-gray-500 hover:bg-gray-800 rounded-md text-white p-2">Download <FontAwesomeIcon className="animate-bounce" icon={faDownload} /></button>
         </div>
     </div>}
         </div>
