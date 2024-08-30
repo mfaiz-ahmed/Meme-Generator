@@ -48,15 +48,15 @@ const generateMeme = async ()=>{
     }
 }
 
-    return <div className="mt-10">
+    return <div className="mt-10 flex justify-around">
         <div className="rounded-lg margin border text-center border-gray-800 w-96 shadow-xl">
     <div className="grid justify-center items-center p-10">
         <h1 className="font-black text-xl mb-10">{meme.name}</h1>
-        <Image width={250} height={100} src={meme.url} alt={meme.name} />
-        <div className="flex justify-start flex-col items-start gap-4 text-lg">
+        <Image width={300} height={300} src={meme.url} alt={meme.name} />
+        <div className="flex justify-start flex-col mt-5 items-start gap-4 text-lg">
         <label  htmlFor="firstText">First Text
         </label>
-            <input className="border border-gray-300 w-fit p-3 rounded-full focus:outline-gray-500"
+            <input className="border border-gray-300 w-full px-3 rounded-md hover:border-blue-400 ease-in-out duration-500 focus:outline-gray-500"
             type="text"
             placeholder="Enter First Text"
             value={firstText}
@@ -64,10 +64,10 @@ const generateMeme = async ()=>{
                 setFirstText(e.target.value)
             }} />
         </div>
-        <div className="flex justify-start flex-col items-start gap-4 text-lg">
+        <div className="flex justify-start flex-col mt-5 items-start gap-4 text-lg">
         <label  htmlFor="secondText">Second Text
         </label>
-            <input className="border border-gray-300 w-full p-3 rounded-full focus:outline-gray-500"
+            <input className="border border-gray-300 w-full px-3 rounded-md hover:border-blue-400 ease-in-out duration-500 focus:outline-gray-500"
             type="text"
             placeholder="Enter Second Text"
             value={secondText}
@@ -75,12 +75,15 @@ const generateMeme = async ()=>{
                 setSecondText(e.target.value)
             }} />
         </div>
-        <button onClick={generateMeme} className="mt-5 text-l bg-gray-500 hover:bg-gray-800 rounded-full text-white p-2">GENERATE <FontAwesomeIcon icon={faWandSparkles} /></button>
+        <button onClick={generateMeme} className="mt-5 text-l bg-gray-500 hover:bg-gray-800 rounded-md text-white p-2">Generate     <FontAwesomeIcon icon={faWandSparkles} /></button>
     </div>
     </div>
     {generatedUrl && 
-    <div>
-        <Image width={200} height={100} src={generatedUrl} alt="Generated Meme"/>
+    <div className="rounded-lg margin border text-center border-gray-800 w-96 shadow-xl">
+        <div className="grid justify-center items-center p-10">
+            <h1 className="font-black text-xl mb-10">Generated Meme</h1>
+        <Image width={300} height={300} src={generatedUrl} alt="Generated Meme"/>
+        </div>
     </div>}
         </div>
 
